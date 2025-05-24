@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>USERS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="data:,">
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/common.css}" rel="stylesheet" />
+    <link th:href="@{/css/admin/admin.css}" rel="stylesheet" />
+    <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+    <script th:src="@{/js/common.js}"></script>
+</head>
+<body>
+    <div class="body-contents">
+        <div th:replace="~{fragment::side}"/>
+        <div th:replace="~{fragment::dive}"/>
+        <div th:replace="~{fragment::notif}"/>
+        <div th:replace="~{fragment::toggle}"/>
+        <div th:replace="~{fragment::sidebar}"/>
+        <div th:replace="~{fragment::diving}"/>
+        <div th:replace="~{fragment::notifi}"/>
+        <div id="main_contents">
+            <div id="header" class="text_contents">
+                ADMIN
+            </div>
+            <div id="center" class="text_contents">
+                <a class = "menulist" th:href="@{/admin/user_search}">user_search</a>
+            </div>  
+            <div id="center" class="text_contents">
+                <a class = "menulist" th:href="@{/admin/post_search}">post_search</a>
+            </div>  
+            <div id="center" class="text_contents">
+                <a class = "menulist" th:href="@{/admin/room_search}">room_search</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

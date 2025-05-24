@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>SighUp</title>
+    <meta charset="utf-8" />
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"rel="stylesheet" >
+    <link th:href="@{/css/common.css}" rel="stylesheet" />
+	<link th:href="@{/css/account/sighup.css}" rel="stylesheet" />
+    <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+	<script th:src="@{/js/auth.js}"></script>
+</head>
+<body>
+    <div class = "inputGroup">
+        <h1>SIGH UP</h1>
+        <form id = "register" th:action="@{/sighup}" th:object="${user}" method="post">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <input type="hidden" th:name = "username" th:value="*{user_id}" required/></label>
+            <div class = "userinfo">
+                <label class = "anot"><input type="text" th:field="*{user_id}" placeholder="user_id" required/></label>
+            </div>
+            <div class = "userinfo">
+                <label class = "anot"><input type="text" th:field="*{user_name}" placeholder="username" required/></label>
+            </div>
+            <div class = "userinfo">
+                <label class = "anot"><input type="text" th:field="*{email}" placeholder="mail_address" required /></label>
+            </div>
+            <div class = "userinfo">
+                <label class = "anot"><input type="password" th:field="*{password}" placeholder="password" required /></label>       
+            </div>
+        </form>
+        <div class ="submitbutton">
+            <a th:onclick="userRegister()" class="btn btn-gradient"><span>SIGHUP</span></a>  
+        </div>
+        <p class = "sighinlink">
+            <a th:href="@{/sighin}">Sighin</a>
+        </p>
+    </div>
+
+    <div class="modal fade" tabindex="-1" id="sighup_success" aria-labelledby="basicModal"aria-hidden="true">
+        <div class="modal-dialog" id="js-modal-content">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">welcome!</h5>
+                </div>
+                <div class="deleted-modal-body" style="padding-left:20px;">
+                    <p>登録しました</p>
+                </div>
+                <div class="modal-footer">
+                    <div class ="submitbutton">
+                        <a th:onclick="userCheck('register')" class="btn btn-primary"><span>OK</span></a>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="data:,">
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/common.css}" rel="stylesheet" />
+    <link th:href="@{/css/home.css}" rel="stylesheet" />
+    <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+</head>
+
+<input type="checkbox" id="openSidebarMenu" th:fragment = "side" name="check">
+<input type="checkbox" id="dive" th:fragment = "dive" name="check">
+<input type="checkbox" id="notif" th:fragment = "notif" name="check">
+<label for="openSidebarMenu" class="sidebarIconToggle" th:fragment = "toggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+</label>
+      
+<div id="sidebarMenu" th:fragment = "sidebar">
+    <ul class="sidebarMenuInner">
+        <div>
+            <a class="logoicon" th:href="@{/}">
+                <img id="logo" th:src="@{/img/sharphin.png}"> 
+            </a>
+        </div>
+        <div class="menus">
+            <li id="s1">
+                <a class = "menulist" th:href="@{/}">
+                    <img class="menuicon" th:src="@{/img/home.png}"/>
+                    <p>HOME</p>
+                </a>
+            </li>
+            <li id="s2">
+                <a class = "menulist" th:href="@{/#}">
+                    <label for="dive" class="divingmenu">
+                        <img class="menuicon" th:src="@{/img/search.png}"/>
+                        <p>DIVING</p>
+                    </label>
+                </a>
+            </li>
+            <li id="s3">
+                <a class = "menulist" th:href="@{/#}">
+                    <label for="notif" class="notifmenu">
+                        <img class="menuicon" th:src="@{/img/notif.png}"/>
+                        <p>NOTIFICATINON</p>
+                    </label>
+                </a>
+            </li>
+            <li id="s4">
+                <a class = "menulist" th:href="@{/myserver}">
+                    <img class="menuicon" th:src="@{/img/serv.png}"/>
+                    <p>ROOMS</p>
+                </a>
+            </li>
+            <li id="s5">
+                <form action="#" th:action="@{/message}" id="form1" method="POST">
+                    <input type="hidden" th:name="from_user_id" value="test" th:value="${#authentication.principal.user_id}"/>
+                    <a class = "menulist" href="javascript:form1.submit()">
+                        <img class="menuicon" th:src="@{/img/messa.png}"/>
+                        <p>MESSAGE</p>
+                    </a>
+                </form>
+            </li>
+            <li id="s6">
+                <a class = "menulist" th:href="@{/discom}">
+                    <img class="menuicon" th:src="@{/img/discomm.png}"/>
+                    <p>DISCOMM</p>
+                </a>
+            </li>
+            <li id="s7">
+                <a class = "menulist" th:href="|@{/__${#authentication.principal.user_id}__}|">
+                    <img class="menuicon" th:src="@{/img/profile.png}"/>
+                    <p>PROFILE</p>
+                </a>
+            </li>
+            <div sec:authorize="hasAuthority('ADMIN')">
+                <li id="s8">
+                    <a class = "menulist" th:href="@{/admin}">
+                        <img class="menuicon" th:src="@{/img/users.png}"/>
+                        <p>ADMIN</p>
+                    </a>
+                </li>
+            </div>
+        </div>
+    </ul>
+</div>
+<div id="diving" th:fragment = "diving">
+    ggggggggggg
+</div>
+<div id="notifi" th:fragment = "notifi">
+    tttttttttt
+</div>
+</html>

@@ -1,0 +1,17 @@
+#main_contents {
+    flex-flow: column;
+    background-color: rgb(170, 170, 170);
+}
+#s8 {
+    border: 2px solid #ffffff;
+}
+#enable {
+    margin: 0;
+    display:block;
+}
+.disena {
+    display:flex;
+}
+.disena label{
+    margin-right: 10px;
+}

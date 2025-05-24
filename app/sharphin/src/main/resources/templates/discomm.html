@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>DisComm</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link rel="icon" href="data:,">
+    <link th:href="@{/css/common.css}" rel="stylesheet" />
+    <link th:href="@{/css/disCommu.css}" rel="stylesheet" />
+    <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+    <script th:src="@{/js/disCommu.js}"></script>
+    <script th:src="@{/js/common.js}"></script>
+</head>
+<body>
+    <div class="body-contents">
+        <div th:replace="~{fragment::side}"/>
+        <div th:replace="~{fragment::dive}"/>
+        <div th:replace="~{fragment::notif}"/>
+        <div th:replace="~{fragment::toggle}"/>
+        <div th:replace="~{fragment::sidebar}"/>
+        <div th:replace="~{fragment::diving}"/>
+        <div th:replace="~{fragment::notifi}"/>
+        <div id="main_contents">
+            <div id="center" class="text_contents">
+            </div>
+            <div class="postmenu">
+                <li><h3>DO POST</h3></li>
+                <li class = "inputPost">
+                    <label class="tx"><textarea id = "inputPost" type="text" cols="30" rows="5" placeholder="enter your monologue"></textarea></label>
+                </li>
+                <li id = "button">
+                    <button id = "submitPost" onclick="submit_text()">POST</button>
+                </li>
+                <li>
+                    <label>FONT</label>
+                    <select id="fontSelect" onchange="setFont()">
+                        <option style = 'font-family: "Varela Round"'>Varela Round</option>
+                        <option style = 'font-family : "ＭＳ Ｐ明朝,ＭＳ 明朝"'>ＭＳ Ｐ明朝,ＭＳ 明朝</option>
+                        <option style = 'font-family : "游ゴシック"'>游ゴシック</option>
+                        <option style = 'font-family : "Impact"'>Impact</option>
+                        <option style = 'font-family : "Meiryo UI"'>Meiryo UI</option>
+                        <option style = 'font-family : "Book Antiqua"'>Book Antiqua</option>
+                        <option style = 'font-family : "HG行書体"'>HG行書体</option>
+                        <option style = 'font-family : "Comic Sans MS"'>Comic Sans MS</option>
+                        <option style = 'font-family : "HG正楷書体-PRO"'>HG正楷書体-PRO</option>
+                        <option style = 'font-family : "Jenkins v2.0"'>Jenkins v2.0</option>
+                        <option style = 'font-family : "Sylfaen"'>Sylfaen</option>
+                        <option style = 'font-family : "Times New Roman"'>Times New Roman</option>
+                      </select>
+                </li>
+                <li>
+                    <label>FONTCOLOR</label><input id ="inputfontcolor" type="color"onchange="setColor()">
+                </li>
+                <li>
+                    <label>BACKGROUND</label><input id ="inputbackcolor" type="color" value="#ffffff" onchange="setBackColor()">
+                </li>
+                <li>
+                    <label>SIZE</label><input id ="inputfontsize" type="number" value="20" onchange="setFontSize()">
+                </li>
+                <li>
+                    <label>SPEED</label><input id ="inputspeed" type="number" value="20" onchange="setSpeed()">
+                </li>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

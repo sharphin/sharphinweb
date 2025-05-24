@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="data:,">
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/common.css}" rel="stylesheet" />
+    <link th:href="@{/css/diving.css}" rel="stylesheet" />
+    <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+</head>
+<body>
+    <div class="body-contents">
+        <div th:replace="~{fragment::checkbox}"/>
+        <div th:replace="~{fragment::toggle}"/>
+        <div th:replace="~{fragment::sidebar}"/>
+        <div id="main_contents">
+            <div id="header" class="text_contents">
+                DIVING
+            </div>
+            <div id="center" class="text_contents">
+                dddd
+            </div>
+        </div>
+    </div>
+</body>
+</html>

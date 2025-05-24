@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ADMIN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="data:,">
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/common.css}" rel="stylesheet" />
+    <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+    <script th:src="@{/js/common.js}"></script>
+</head>
+<body>
+    <div class="body-contents">
+        <div th:replace="~{fragment::side}"/>
+        <div th:replace="~{fragment::dive}"/>
+        <div th:replace="~{fragment::notif}"/>
+        <div th:replace="~{fragment::toggle}"/>
+        <div th:replace="~{fragment::sidebar}"/>
+        <div th:replace="~{fragment::diving}"/>
+        <div th:replace="~{fragment::notifi}"/>
+        <div id="main_contents">
+            <div id="header" class="text_contents">
+                ROOM SEARCH
+                <input type="text" placeholder="user_id">
+                <input type="text" placeholder="username">
+                <input type="text" placeholder="email">
+                <div class="disena">
+                    <label for="enable">enable</label>
+                    <input type="checkbox" id="enable" checked>  
+                </div>
+                <input type="text" placeholder="post_word">
+            </div>
+            <div id="center" class="text_contents">
+                dddd
+            </div>          
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta th:name="_csrf" th:content="${_csrf.token}">
+    <meta th:name="_csrf_header" th:content="${_csrf.headerName}">
+    <link rel="icon" href="data:,">
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/common.css}" rel="stylesheet" />
+    <link th:href="@{/css/edit_profile.css}" rel="stylesheet" />
+    <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+    <script th:src="@{/js/common.js}"></script>
+    <script th:src="@{/js/edit_profile.js}" defer></script>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <div class="body-contents">
+        <div th:replace="~{fragment::side}"/>
+        <div th:replace="~{fragment::dive}"/>
+        <div th:replace="~{fragment::notif}"/>
+        <div th:replace="~{fragment::toggle}"/>
+        <div th:replace="~{fragment::sidebar}"/>
+        <div th:replace="~{fragment::diving}"/>
+        <div th:replace="~{fragment::notifi}"/>
+        <div id="main_contents">
+            <div class="punksList">
+                <a th:href="|@{/__${#authentication.principal.user_id}__}|">profile</a>
+            </div>
+            <div id="header">
+                <div class="iconimage" onclick="fileChoose()">
+                    <th:block th:if = "${#strings.isEmpty(user.icon_path)}">
+                        <img th:src="@{/img/account.png}">
+                    </th:block>
+                    <th:block th:unless = "${#strings.isEmpty(user.icon_path)}">
+                        <img th:src="@{/geticon(name=${user.icon_path})}">
+                    </th:block>
+                </div>
+                <form enctype="multipart/form-data" method="post">
+                    <input id="iconupload" type="file" name="userfile" accept="image/*" onchange="fileUP()" hidden>
+                </form>
+            </div>
+            <div id="center">
+                <form th:action="@{/__${user.user_id}__/edit/save}" th:object="${user}" method="post" id="userupd">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                    <input type="hidden" th:field="*{authority}">
+                    <input type="hidden" th:field="*{icon_path}">
+                    <input type="hidden" name="old_user_id" th:value="${user.user_id}">
+                    <div class = "userinfo">
+                        <label class = "anot"><input type="text" th:field="*{user_id}" placeholder="user_id" required/></label>
+                    </div>
+                    <div class = "userinfo">
+                        <label class = "anot"><input type="text" th:field="*{user_name}" placeholder="username" required/></label>
+                    </div>
+                    <div class = "userinfo">
+                        <label class = "anot"><input type="text" th:field="*{email}" placeholder="mail_address" required /></label>
+                    </div>
+                    <div class = "userinfo">
+                        <label class = "anot"><input type="password" th:field="*{password}" placeholder="password" required /></label>       
+                    </div>
+                    <button class="btn btn-gradient" onclick="userupdate(document.getElementById('user_id'))">SAVE</button>
+                </form>
+            </div>
+            <div>
+                <canvas id="canvas" width="0" height="0" hidden></canvas>
+            </div>
+            <form th:action="@{/__${user.user_id}}" method="get" id="profileback">
+            </form>
+            <div id="userid" th:text="${user.user_id}" hidden></div>
+        </div>
+    </div>
+</body>
+</html>

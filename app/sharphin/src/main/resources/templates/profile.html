@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="data:,">
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/common.css}" rel="stylesheet" />
+    <link th:href="@{/css/profile.css}" rel="stylesheet" />
+    <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+    <script th:src="@{/js/common.js}"></script>
+    <script th:src="@{/js/profile.js}"></script>
+</head>
+<body>
+    <div class="body-contents">
+        <div th:replace="~{fragment::side}"/>
+        <div th:replace="~{fragment::dive}"/>
+        <div th:replace="~{fragment::notif}"/>
+        <div th:replace="~{fragment::toggle}"/>
+        <div th:replace="~{fragment::sidebar}"/>
+        <div th:replace="~{fragment::diving}"/>
+        <div th:replace="~{fragment::notifi}"/>
+        <div id="main_contents">
+            <div id="header" class="text_contents">
+                <div class="iconbase">
+                    <div class="iconimage">
+                        <th:block th:if = "${#strings.isEmpty(user.icon_path)}">
+                            <img th:src="@{/img/account.png}">
+                        </th:block>
+                        <th:block th:unless = "${#strings.isEmpty(user.icon_path)}">
+                            <img th:src="@{/geticon(name=${user.icon_path})}">
+                        </th:block>
+                    </div>
+                </div>
+                <div class="infogroup">
+                    <h2 th:text = "${user.user_name}"></h2>
+                    <h5 class="userid">@[[${user.user_id}]]</h5>
+                    <div class="follow_er">
+                        <h5>follow [[${follow}]]</h5>
+                        <h5 class="er">follower [[${follower}]]</h5>
+                    </div>
+                    <div th:if = "${#authentication.principal.user_id == user.user_id}">
+                        <div class = "edit_profile">
+                            <a th:href="@{/__${user.user_id}__/edit}"class="btn btn-gradient">EDIT PROFILE</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="other">
+                    <div th:if = "${#authentication.principal.user_id == user.user_id}">
+                        <label for="modalToggle" class="modal-open-button">
+                            <img th:src="@{/img/setting.png}">
+                        </label>  
+                    </div>
+                </div>          
+            </div>
+            <div id="mid">
+            </div>
+            <input type="checkbox" id="modalToggle" class="modal-checkbox">
+            <div class="other_modal" id="modal">
+                <div class="modal-contents">
+                    <li onclick="sighoutbutton()">SIGH OUT</li>
+                    <li>SETTING</li>
+                    <button type="button" id="sighoutbuttonhide" data-bs-toggle="modal" data-bs-target="#sighout" hidden>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" tabindex="-1" id="sighout" aria-labelledby="basicModal"aria-hidden="true">
+        <div class="modal-dialog" id="js-modal-content">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">THANK YOU!</h5>
+                </div>
+                <div class="deleted-modal-body" style="padding-left:20px;">
+                    <p>See YOU AGAIN</p>
+                    <form id = "sighout" th:action="@{/sighout}" method="post">
+                        <button type="submit" class="open-button btn btn-primary" data-bs-toggle="modal" data-bs-target="#sighout">OK</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

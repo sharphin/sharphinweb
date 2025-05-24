@@ -1,0 +1,78 @@
+#main_contents {
+    background-color: aliceblue;
+}
+#s5 {
+    border: 2px solid #ffffff;
+}
+#message {
+    border-bottom: 1px solid #abcfff;
+    height: 85%;
+    width: 100%;
+}
+.user_list {
+    width: 450px;
+    border: 1px solid #abcfff;
+}
+.user_list li {
+    display: flex;
+    list-style: none;
+}
+.user_list li:hover {
+    background-color: rgb(218, 238, 255);
+}
+.chatt {
+    width: 100%;
+}
+.chatt li {
+    list-style: none;
+}
+.chatt .userrr{
+    border-bottom: 1px solid #abcfff;
+    display: flex;
+}
+
+.form-inline {
+    margin: 10px;
+    vertical-align: bottom;
+    display: flex;
+}
+.iconimage {
+    margin: 7px;
+    width: 45px;
+    height: 45px;
+    background-color: #abcfff;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+.iconimage img,.iconimageee img{
+    position: absolute;  /* 相対位置に指定 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+.iconimageee {
+    margin: 7px;
+    width: 50px;
+    height: 50px;
+    background-color: #abcfff;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+.username {
+    font-size: 1.3rem;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+.username2 {
+    font-size: 1.8rem;
+    margin-top: 7px;
+    margin-left: 5px;
+}
+.userid {
+    margin-top: -3px;
+    margin-left: 5px;
+}

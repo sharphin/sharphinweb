@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sighin</title>
+    <meta charset="utf-8" />
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/common.css}" rel="stylesheet" />
+	<link th:href="@{/css/account/sighin.css}" rel="stylesheet" />
+    <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+	<script th:src="@{/js/auth.js}"></script>
+</head>
+<body>
+    <div class = "inputGroup">
+        <h1>SIGH IN</h1>
+        
+        <form th:action="@{/sighin}" method="post" id = "authUser">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <div class = "userinfo">
+                <label class = "anot"><input type="text" id="username" name= "username" placeholder="enter your user_id" required/></label>
+            </div>
+            <div class = "userinfo">
+                <label class = "anot"><input type="password" id="password" name="password" placeholder="enter your password" required/></label>
+            </div>
+            <div class ="submitbutton">
+                <a th:onclick="userCheck('authUser')" class="btn btn-gradient"><span>SIGHIN</span></a>  
+            </div>
+        </form>
+        <div th:if="${param.error}">
+            <p class ="invalid">Invalid username and password.</p>
+        </div>
+        <div th:if="${param.logout}">
+            <p class ="message">You have been logged out.</p>
+        </div>
+        <p class = "sighuplink">
+            Don't have an account? <a th:href="@{/sighup}">Register</a>
+        </p>
+    </div>
+</body>
+</html>

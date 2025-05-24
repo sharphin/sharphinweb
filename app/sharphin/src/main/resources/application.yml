@@ -1,0 +1,19 @@
+spring:
+    application:
+        name: sharphin
+    datasource: 
+        driver-class-name: org.postgresql.Driver
+        url: jdbc:postgresql://database-1.ch6cgo00mu0k.ap-southeast-2.rds.amazonaws.com:5432/sharphin
+        username: sharphin
+        password: fk5i9dtu
+    sql:
+        init:
+            mode: always
+            encoding: UTF-8
+    servlet:
+        multipart:
+            max-file-size: 15MB
+            max-request-size: 50MB
+
+        
+        
