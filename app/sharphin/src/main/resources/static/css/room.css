@@ -1,9 +1,7 @@
-
 #main_contents {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: aliceblue;
+    background-color: azure;
 }
-#s5 {
+#s4 {
     border: 2px solid #ffffff;
 }
 #message {
@@ -15,15 +13,24 @@
 #message li {
     margin-bottom: 5px;
 }
-.user_list {
+.room_build {
+    text-align: center;
+    border-bottom: 1px solid #abcfff;
+}
+.room_build img{
+    border-radius: 50%;
+    background-color: aqua;
+    border: 1px solid #abcfff;
+}
+.room_list {
     width: 450px;
     border: 1px solid #abcfff;
 }
-.user_list li {
+.room_list li {
     display: flex;
     list-style: none;
 }
-.user_list li:hover {
+.room_list li:hover {
     background-color: rgb(218, 238, 255);
 }
 .chatt {

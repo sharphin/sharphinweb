@@ -51,15 +51,18 @@
                 </a>
             </li>
             <li id="s4">
-                <a class = "menulist" th:href="@{/myserver}">
-                    <img class="menuicon" th:src="@{/img/serv.png}"/>
-                    <p>ROOMS</p>
-                </a>
+                <form action="#" th:action="@{/room}" id="form1" method="POST">
+                    <input type="hidden" th:name="room_id" value="test" th:value="${#authentication.principal.user_id}"/>
+                    <a class = "menulist" href="javascript:form1.submit()">
+                        <img class="menuicon" th:src="@{/img/room.png}"/>
+                        <p>ROOMS</p>
+                    </a>
+                </form>
             </li>
             <li id="s5">
-                <form action="#" th:action="@{/message}" id="form1" method="POST">
+                <form action="#" th:action="@{/message}" id="form2" method="POST">
                     <input type="hidden" th:name="from_user_id" value="test" th:value="${#authentication.principal.user_id}"/>
-                    <a class = "menulist" href="javascript:form1.submit()">
+                    <a class = "menulist" href="javascript:form2.submit()">
                         <img class="menuicon" th:src="@{/img/messa.png}"/>
                         <p>MESSAGE</p>
                     </a>

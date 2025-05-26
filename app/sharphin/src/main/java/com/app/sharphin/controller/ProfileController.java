@@ -73,7 +73,7 @@ public class ProfileController {
 		UserSighInDto userDetails = new UserSighInDto(dto);
 		SecurityContext auth = SecurityContextHolder.getContext();
 		auth.setAuthentication(new UsernamePasswordAuthenticationToken(userDetails,userDetails.getUser_id(),userDetails.getAuthorities()));
-		int result = service.userUpdate(dto,user_id);
+		service.userUpdate(dto,user_id);
 		return viewProfile(model,userinfo.user_id());
 	}
 	@PostMapping("/{user_id}/edit/iconsave")
@@ -93,7 +93,7 @@ public class ProfileController {
 			model.addAttribute("icon_path", filename);
 			if (Files.exists(p)) Files.delete(p);
 			Files.write(Paths.get(filePath), content);
-        } catch (Exception e) {
+        } catch (IOException e) {
 			return -1;
         }
 		return result;

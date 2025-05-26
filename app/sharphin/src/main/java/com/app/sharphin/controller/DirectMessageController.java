@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.app.sharphin.dto.message.SendUserDto;
 import com.app.sharphin.dto.message.SendMessageInfoDto;
+import com.app.sharphin.dto.message.SendUserDto;
 import com.app.sharphin.service.FollowUserService;
 import com.app.sharphin.service.MessageService;
 import com.app.sharphin.service.UserService;
