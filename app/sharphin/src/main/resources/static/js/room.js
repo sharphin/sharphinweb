@@ -1,4 +1,8 @@
 let stompClient = null;
+function addroombutton() {
+    let button = document.getElementById("addroombuttonhide");
+    button.click();
+}
 function send_user_decide(thisElement,chatroom_id) {
   $.ajax({
     url: "message/d/"+chatroom_id,
@@ -8,7 +12,7 @@ function send_user_decide(thisElement,chatroom_id) {
     let send_user = data.sendUser;
     let icon = '<img src="/geticon?name='+send_user.icon_path+'">';
     if(send_user.icon_path == null) {
-      icon = '<img src="/img/account.png"></img>'; 
+      icon = '<img src="/img/account.png"></img>';
     }
     $(".chatt").html(
       '<li class ="userrr">\
@@ -19,7 +23,7 @@ function send_user_decide(thisElement,chatroom_id) {
       +'</div>\
       <div class="form-inline">\
         <div class="form-group">\
-          <input type="text" id="name"  value = "'+send_user.user_id+'" hidden>\
+          <input type="text" id="name" value = "'+send_user.user_id+'" hidden>\
         </div>\
         <div class="form-group">\
           <input type="text" id="statement" placeholder="Your Message">\

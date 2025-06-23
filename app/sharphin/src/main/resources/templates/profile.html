@@ -4,7 +4,7 @@
     <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="data:,">
-    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
     <link th:href="@{/css/common.css}" rel="stylesheet" />
     <link th:href="@{/css/profile.css}" rel="stylesheet" />
     <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
@@ -71,10 +71,9 @@
         <div class="modal-dialog" id="js-modal-content">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">THANK YOU!</h5>
+                    <h5 class="modal-title">REARY?</h5>
                 </div>
                 <div class="deleted-modal-body" style="padding-left:20px;">
-                    <p>See YOU AGAIN</p>
                     <form id = "sighout" th:action="@{/sighout}" method="post">
                         <button type="submit" class="open-button btn btn-primary" data-bs-toggle="modal" data-bs-target="#sighout">OK</button>
                     </form>

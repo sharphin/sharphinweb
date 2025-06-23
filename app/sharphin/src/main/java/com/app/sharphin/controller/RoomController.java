@@ -48,5 +48,5 @@ public class RoomController {
         if(service.existUser(room_id)) {
             simpMessagingTemplate.convertAndSend("/topic/messages/"+room_id, message);
         }
-    } 
+    }
 }

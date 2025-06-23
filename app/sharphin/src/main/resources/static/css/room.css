@@ -10,8 +10,8 @@
     width: 100%;
     overflow-y: scroll;
 }
-#message li {
-    margin-bottom: 5px;
+li {
+    list-style: none;
 }
 .room_build {
     text-align: center;
@@ -28,16 +28,12 @@
 }
 .room_list li {
     display: flex;
-    list-style: none;
 }
 .room_list li:hover {
     background-color: rgb(218, 238, 255);
 }
 .chatt {
     width: 100%;
-}
-.chatt li {
-    list-style: none;
 }
 .chatt .userrr{
     border-bottom: 1px solid #abcfff;
