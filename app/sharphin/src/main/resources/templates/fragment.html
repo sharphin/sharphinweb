@@ -61,7 +61,6 @@
             </li>
             <li id="s5">
                 <form action="#" th:action="@{/message}" id="form2" method="POST">
-                    <input type="hidden" th:name="from_user_id" value="test" th:value="${#authentication.principal.user_id}"/>
                     <a class = "menulist" href="javascript:form2.submit()">
                         <img class="menuicon" th:src="@{/img/messa.png}"/>
                         <p>MESSAGE</p>

@@ -25,6 +25,9 @@ public class FollowUserService {
     public List<String> findFollowerUser_idList(String user_id) {
         return userRepository.findFollowerUser_idList(user_id);
     }
+    public SendUserDto findChatPartner(String user_id, String chatroom_id) {
+        return userRepository.findChatPartner(user_id, chatroom_id);
+    }
     public List<SendUserDto> messageUserlists(String from_user_id) {
         return userRepository.messageUserLists(from_user_id);
     }

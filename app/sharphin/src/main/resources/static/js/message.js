@@ -50,7 +50,7 @@ function connect() {
   stompClient = Stomp.over(socket);
   stompClient.connect({}, function (frame) {
     console.log('Connected: ' + frame);
-    stompClient.subscribe('/topic/messages/'+$("#fromuser").text(), function (response) {
+    stompClient.subscribe('/user/queue/messages', function (response) {
       showRecieveMessage(response.body);
     });
   });
