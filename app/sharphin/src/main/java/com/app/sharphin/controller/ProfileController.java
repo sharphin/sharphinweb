@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -40,6 +41,8 @@ public class ProfileController {
     UserService service;
 	@Autowired
     FollowUserService fservice;
+	@Value("${sharphin.icon-dir}")
+	String iconDir;
 	@GetMapping("/{user_id}")
 	public String viewProfile(Model model,@PathVariable String user_id) {
         UserDto user = service.getUserDto(user_id);
@@ -83,16 +86,15 @@ public class ProfileController {
 		int result = 0;
 		LocalDate today = LocalDate.now();
 		String old_path = service.getUserDto(user_id).icon_path();
-		Path p = Paths.get("C:\\images\\icon\\"+old_path);
         try {
             String filename = user_id+"_icon_"+today.format(DateTimeFormatter.ofPattern("yyyyMMdd"))+".jpg";
-            String filePath = "C:\\images\\icon\\" + filename;
+            Path filePath = Paths.get(iconDir, filename);
 			result = service.iconUpDate(user_id,filename);
             byte[] content = file.getBytes();
-			if (!old_path.equals(filename)) Files.delete(p);
+			if (old_path != null) Files.deleteIfExists(Paths.get(iconDir, old_path));
 			model.addAttribute("icon_path", filename);
-			if (Files.exists(p)) Files.delete(p);
-			Files.write(Paths.get(filePath), content);
+			Files.createDirectories(filePath.getParent());
+			Files.write(filePath, content);
         } catch (IOException e) {
 			return -1;
         }
@@ -102,7 +104,7 @@ public class ProfileController {
 	@RequestMapping("/geticon")
 	@ResponseBody
 	public HttpEntity<byte[]> getImg(@RequestParam("name") String fileName){
-		File fileImg = new File("C:\\images\\icon\\"+ fileName);
+		File fileImg = Paths.get(iconDir, fileName).toFile();
 		
 		byte[] byteImg = null;
 		HttpHeaders headers = null;

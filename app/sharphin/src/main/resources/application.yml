@@ -3,9 +3,9 @@ spring:
         name: sharphin
     datasource: 
         driver-class-name: org.postgresql.Driver
-        url: jdbc:postgresql://localhost:5432/sharphin
-        username: sharphin
-        password: fk5i9dtu
+        url: ${DB_URL:jdbc:postgresql://localhost:5432/sharphin}
+        username: ${DB_USERNAME:sharphin}
+        password: ${DB_PASSWORD:fk5i9dtu}
     sql:
         init:
             mode: always
@@ -15,5 +15,6 @@ spring:
             max-file-size: 15MB
             max-request-size: 50MB
 
-        
-        
+sharphin:
+    # アイコン画像の保存先。Windowsなら ICON_DIR=C:\images\icon などで上書き可
+    icon-dir: ${ICON_DIR:${user.home}/sharphin/icon}

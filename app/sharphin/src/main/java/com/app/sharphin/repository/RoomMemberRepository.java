@@ -48,7 +48,7 @@ public class RoomMemberRepository {
         sql.append("create_at");
         sql.append(") VALUES (");
         sql.append(":room_id,");
-        sql.append(":room_member,");
+        sql.append(":room_member_id,");
         sql.append(":member_auth,");
         sql.append(":create_at");
         sql.append(")");

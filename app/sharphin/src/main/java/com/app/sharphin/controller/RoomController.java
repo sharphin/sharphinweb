@@ -42,7 +42,7 @@ public class RoomController {
 
     @Autowired
     UserService service;
-    @MessageMapping("/room/{group_id}")
+    @MessageMapping("/room/{room_id}")
     public void sendMessage(@DestinationVariable String room_id, String message) {
         //mservice.sendMessage(room_id,message);
         if(service.existUser(room_id)) {

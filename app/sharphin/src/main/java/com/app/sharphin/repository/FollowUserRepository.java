@@ -100,11 +100,11 @@ public class FollowUserRepository {
         sql.append("(");
         sql.append("follow_user_id,");
         sql.append("followed_user_id,");
-        sql.append("create_at,");
+        sql.append("create_at");
         sql.append(") VALUES (");
         sql.append(":follow_user_id,");
         sql.append(":followed_user_id,");
-        sql.append(":create_at,");
+        sql.append(":create_at");
         sql.append(")");
 
         String str = sql.toString();
@@ -117,7 +117,7 @@ public class FollowUserRepository {
         String sql = "DELETE FROM public.follow_user_list WHERE follow_user_id = :follow_user_id";
         SqlParameterSource params = new MapSqlParameterSource()
                 .addValue("follow_user_id", user_id);
-        int rowNumber = jdbc.update(sql, params);
+        int rowNumber = npjdbc.update(sql, params);
 
         return rowNumber;
     }
