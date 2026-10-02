@@ -118,11 +118,11 @@ public class UserRepository {
     }
 
     public int deleteOne(String user_id) {
-        String sql = "DELETE FROM public.users WHERE user_id = :userId";
+        String sql = "DELETE FROM public.users WHERE user_id = :user_id";
 
         SqlParameterSource params = new MapSqlParameterSource()
                 .addValue("user_id", user_id);
-        int rowNumber = jdbc.update(sql, params);
+        int rowNumber = npjdbc.update(sql, params);
 
         return rowNumber;
     }

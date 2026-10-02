@@ -50,6 +50,19 @@ public class FollowUserRepository {
         }
         return user_list;
     }
+    // user_id が参加している chatroom の相手を返す。参加していなければ null
+    public SendUserDto findChatPartner(String user_id, String chatroom_id) {
+        SqlParameterSource param = new MapSqlParameterSource()
+                .addValue("follow_user_id", user_id)
+                .addValue("chatroom_id", chatroom_id);
+        StringBuilder sql = new StringBuilder();
+        sql.append("select followed_user_id,ful.chatroom_id,user_name,icon_path,null as main_message ");
+        sql.append("from public.follow_user_list as ful ");
+        sql.append("inner join public.users as us on ful.followed_user_id = us.user_id ");
+        sql.append("where follow_user_id = :follow_user_id and ful.chatroom_id = :chatroom_id");
+        List<SendUserDto> partners = npjdbc.query(sql.toString(),param,MESSAGE_USER_LIST_MAPPER);
+        return partners.isEmpty() ? null : partners.get(0);
+    }
     public int findFollowCount(String user_id) {
         int result;
         try {
@@ -100,11 +113,11 @@ public class FollowUserRepository {
         sql.append("(");
         sql.append("follow_user_id,");
         sql.append("followed_user_id,");
-        sql.append("create_at,");
+        sql.append("create_at");
         sql.append(") VALUES (");
         sql.append(":follow_user_id,");
         sql.append(":followed_user_id,");
-        sql.append(":create_at,");
+        sql.append(":create_at");
         sql.append(")");
 
         String str = sql.toString();
@@ -117,7 +130,7 @@ public class FollowUserRepository {
         String sql = "DELETE FROM public.follow_user_list WHERE follow_user_id = :follow_user_id";
         SqlParameterSource params = new MapSqlParameterSource()
                 .addValue("follow_user_id", user_id);
-        int rowNumber = jdbc.update(sql, params);
+        int rowNumber = npjdbc.update(sql, params);
 
         return rowNumber;
     }

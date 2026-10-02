@@ -1,0 +1,15 @@
+# ローカル開発用 PostgreSQL。 `docker compose up -d` で起動
+# テーブルはアプリ起動時に src/main/resources/schema.sql から自動作成される
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: sharphin
+      POSTGRES_USER: sharphin
+      POSTGRES_PASSWORD: fk5i9dtu
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:

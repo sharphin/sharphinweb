@@ -32,7 +32,11 @@ public class UserSighInDto implements UserDetails{
     public String getUser_id() {
         return user_id;
     }
+    // Spring Security 上の username はログインID (user_id)。WebSocket のユーザー宛て送信もこれで解決される
     public String getUsername() {
+        return user_id;
+    }
+    public String getUser_name() {
         return username;
     }
     public String getEmail() {

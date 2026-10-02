@@ -28,9 +28,9 @@ public class RoomMessageRepository {
     public List<RoomMessageDto> getMessageHistory(String room_id) {
         List<RoomMessageDto> user_list;
         try {
-            SqlParameterSource param = new MapSqlParameterSource().addValue("chatroom_id", room_id);
+            SqlParameterSource param = new MapSqlParameterSource().addValue("room_id", room_id);
             StringBuilder sql = new StringBuilder();
-            sql.append("select * from public.room_message where chatroom_id = :chatroom_id order by create_at");
+            sql.append("select * from public.room_message where room_id = :room_id order by create_at");
             user_list = npjdbc.query(sql.toString(),param,ROOM_LIST_MAPPER);  
         } catch (EmptyResultDataAccessException e) {
             return null;
